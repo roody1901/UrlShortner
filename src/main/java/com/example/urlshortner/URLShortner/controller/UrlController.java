@@ -15,13 +15,13 @@ public class UrlController {
     @Autowired
     private UrlServiceImplement urlService;
 
-    @PostMapping("/")
+    @PostMapping("/urls")
     public ResponseEntity<?> generateShorUrl(@RequestBody URLDetails urlData){
        String shortUrl = urlService.generateShortUrl(urlData);
         return new ResponseEntity<>(shortUrl, HttpStatus.OK);
     }
 
-    @GetMapping("/{shortedurl}")
+    @GetMapping("/")
     public ResponseEntity<?> callLongUrl(@RequestParam("shortedurl") String shortedurl){
         String shortUrl = urlService.getLongUrl(shortedurl);
         return new ResponseEntity<>(shortUrl, HttpStatus.OK);
